@@ -38,16 +38,28 @@ public class Player extends GameObj{
 	private void collision() {
 		for(int i = 0; i < handler.object.size(); i++) {
 			GameObj tempObject = handler.object.get(i);
-			
-			if(tempObject.getId() == Type.Minion || tempObject.getId() == Type.Charger || tempObject.getId() == Type.Zombie || tempObject.getId() == Type.Boss) {
-				if(getBounds().intersects(tempObject.getBounds())) {
-					HUD.HEALTH -=2;
-				}
-				if(getBounds().intersects(tempObject.getBounds()) && tempObject.getId() == Type.Boss) {
-					HUD.HEALTH -=50;
-				}
-				 
+			 
+		
+			if(tempObject.getId() == Type.Minion && getBounds().intersects(tempObject.getBounds())) {                             
+				HUD.HEALTH -=1;
 			}
+			if(tempObject.getId() == Type.Zombie && getBounds().intersects(tempObject.getBounds())) {
+				HUD.HEALTH -=1;
+			}
+			if(tempObject.getId() == Type.Bullet && getBounds().intersects(tempObject.getBounds())) {
+				HUD.HEALTH -=1;
+			}
+			if(tempObject.getId() == Type.Charger && getBounds().intersects(tempObject.getBounds())) {
+				HUD.HEALTH -=2;
+			}
+			if(tempObject.getId() == Type.Villan && getBounds().intersects(tempObject.getBounds())) {
+				HUD.HEALTH -=3;
+			}
+			if(tempObject.getId() == Type.Boss && getBounds().intersects(tempObject.getBounds())) {
+				HUD.HEALTH -=50;
+			}
+				 
+			
 		}
 		
 	}

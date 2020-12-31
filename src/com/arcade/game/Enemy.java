@@ -9,7 +9,7 @@ public class Enemy extends GameObj{
 	private GameObjHandler handler;
 	private GameObj player;
 	Random r = new Random();
-	private int timer = 60;
+	private int timer = 10;
 	private int timer2 = 50;
 	private Color col;
 
@@ -88,7 +88,7 @@ public class Enemy extends GameObj{
 			if(timer <= 0) timer2--;
 			if(timer2 <= 0) {
 				if(xVel == 0) xVel = 2;
-				int spawn = r.nextInt(10);
+				int spawn = r.nextInt(5);
 				if(spawn == 0) handler.addObject(new Enemy((int)xPos+48, (int)yPos+48, Type.Bullet, handler));	
 			}
 			if(xPos <= 0 || xPos >= Game.WIDTH - 96) xVel *= -1;
