@@ -55,7 +55,7 @@ public class Enemy extends GameObj{
 			return new Rectangle((int)xPos, (int)yPos, 96, 96); 
 		}
 		else{
-			return new Rectangle((int)xPos, (int)yPos, 16, 16); 
+			return new Rectangle((int)xPos, (int)yPos, 24, 24); 
 		}
 	}
 
@@ -66,12 +66,12 @@ public class Enemy extends GameObj{
 		if(id == Type.Minion) {
 			if(yPos <= 0 || yPos >= Game.HEIGHT - 32) yVel *= -1;
 			if(xPos <= 0 || xPos >= Game.WIDTH - 16) xVel *= -1;
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.red, 16, 16, 0.02f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, new Color(102, 0, 153), 24, 24, 0.10f, handler));
 		}
 		else if(id == Type.Charger) {
 			if(yPos <= 0 || yPos >= Game.HEIGHT - 32) yVel *= -1;
 			if(xPos <= 0 || xPos >= Game.WIDTH - 16) xVel *= -1;
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.CYAN, 16, 16, 0.02f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, Color.CYAN, 24, 24, 0.10f, handler));
 			
 		}
 		else if(id == Type.Zombie) {
@@ -80,7 +80,7 @@ public class Enemy extends GameObj{
 			float distance = (float )Math.sqrt((xPos-player.getXPos())*(xPos-player.getXPos()) + (yPos-player.getYPos())*(yPos-player.getYPos()));
 			xVel = ((-1/distance) * diffX);
 			yVel = ((-1/distance) * diffY);
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.green, 16, 16, 0.02f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, Color.green, 24, 24, 0.05f, handler));
 		}
 		else if(id == Type.Boss) {
 			if(timer <= 0) yVel = 0;
@@ -95,12 +95,12 @@ public class Enemy extends GameObj{
 		}
 		else if(id == Type.Bullet) {
 			if(yPos>= Game.HEIGHT) handler.removeObject(this);
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.red, 16, 16, 0.02f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, Color.red, 24, 24, 0.10f, handler));
 		}
 		else if(id == Type.Particle) {
 			if(yPos <= 0 || yPos >= Game.HEIGHT - 32) yVel *= -1;
 			if(xPos <= 0 || xPos >= Game.WIDTH - 16) xVel *= -1;
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, col, 16, 16, 0.05f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, col, 24, 24, 0.04f, handler));
 		}
 		else if(id == Type.Villan) {
 			if(yPos <= 0 || yPos >= Game.HEIGHT - 32) { 
@@ -111,7 +111,7 @@ public class Enemy extends GameObj{
 				if(xVel<0) xVel = -(r.nextInt(7)+1) * -1;
 				else xVel = (r.nextInt(7)+1) * -1;
 			}
-			handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.yellow, 16, 16, 0.02f, handler));
+			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, Color.yellow, 24, 24, 0.10f, handler));
 		}
 
 	}
@@ -120,7 +120,7 @@ public class Enemy extends GameObj{
 	public void render(Graphics g) {
 		
 		if(id == Type.Minion) {
-			g.setColor(Color.red);
+			g.setColor(new Color(102, 0, 153));
 		}
 		else if(id == Type.Charger) {
 			g.setColor(Color.CYAN);
@@ -146,7 +146,7 @@ public class Enemy extends GameObj{
 			g.fillRect((int)xPos,(int)yPos, 96,96);
 		}
 		else {
-			g.fillRect((int)xPos,(int)yPos, 16,16);
+			g.fillOval((int)xPos,(int)yPos, 24, 24);
 		}
 		
 

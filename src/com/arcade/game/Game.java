@@ -61,12 +61,12 @@ public class Game extends Canvas implements Runnable{
 		handler = new GameObjHandler(); 
 		hud = new HUD();
 		store = new Store(handler, hud); 
-		menus = new Menus(this, handler, hud, store); 
+		spawner = new EnemySpawner(handler, hud, this);
+		menus = new Menus(this, handler, hud, store, spawner); 
 		new Window(WIDTH, HEIGHT, "Game", this);
 		this.addKeyListener(new Input(handler));
 		this.addMouseListener(menus);
 		this.addMouseListener(store);
-		spawner = new EnemySpawner(handler, hud, this);
 		for(int i = 0; i < 25; i++) {
 			if(i%2 == 0) handler.addObject(new Enemy(r.nextInt(100), 0, Type.Particle, handler));
 			else handler.addObject(new Enemy(r.nextInt(220) + 500, 400, Type.Particle, handler));

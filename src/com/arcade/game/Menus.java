@@ -16,12 +16,14 @@ public class Menus extends MouseAdapter{
 	private Random r = new Random();
 	private HUD hud;
 	private Store store;
+	private EnemySpawner spawner;
 	
-	public Menus(Game game, GameObjHandler handler, HUD hud, Store store) {
+	public Menus(Game game, GameObjHandler handler, HUD hud, Store store, EnemySpawner spawner) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
 		this.store = store;
+		this.spawner = spawner;
 	}
 	
 	
@@ -30,18 +32,18 @@ public class Menus extends MouseAdapter{
 		int mx = e.getX();
 		int my = e.getY();
 		if(Game.gameState == STATE.Menu) {
-			if(mouseOver(mx, my, 210, 150, 200, 64)) { //Play
+			if(mouseOver(mx, my, 275, 153, 80, 29)) { //Play
 
 				Game.gameState = STATE.Select;
 				return;
 				
 				
 			}
-			if(mouseOver(mx, my, 210, 250, 200, 64)) { //Help
+			if(mouseOver(mx, my, 275, 202, 80, 29)) { //Help
 				Game.gameState = STATE.Help;
 				
 			}			
-			if(mouseOver(mx, my, 210, 350, 200, 64)) {//Quit
+			if(mouseOver(mx, my, 275, 248, 80, 29)) {//Quit
 				System.exit(1);
 				 
 			}
@@ -50,25 +52,25 @@ public class Menus extends MouseAdapter{
 		}
 		
 		if(Game.gameState == STATE.Select) {
-			if(mouseOver(mx, my, 210, 150, 200, 64)) { //Normal
+			if(mouseOver(mx, my, 260, 153, 113, 29)) { //Normal
 				Game.gameState = STATE.Game;
 				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, Type.Player, handler));
 				handler.clearEnemies();
-				handler.addObject(new Enemy(r.nextInt(Game.WIDTH) - 50, r.nextInt(Game.HEIGHT) - 50, Type.Minion, handler));	
+				handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));	
 				
 				game.diff = 0;
 				
 			}
-			if(mouseOver(mx, my, 210, 250, 200, 64)) { //Hard
+			if(mouseOver(mx, my, 275, 202, 80, 29)) { //Hard
 				Game.gameState = STATE.Game;
 				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, Type.Player, handler));
 				handler.clearEnemies();
-				handler.addObject(new Enemy(r.nextInt(Game.WIDTH) - 50, r.nextInt(Game.HEIGHT) - 50, Type.Villan, handler));	
+				handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));	
 				
 				game.diff = 1;
 				
 			}			
-			if(mouseOver(mx, my, 210, 350, 200, 64)) {//Back
+			if(mouseOver(mx, my, 275, 248, 80, 29)) {//Back
 				Game.gameState = STATE.Menu;
 				return;
 				 
@@ -96,6 +98,8 @@ public class Menus extends MouseAdapter{
 				store.setPrice(0, 1000);
 				store.setPrice(1, 1000);
 				store.setPrice(2, 1000);
+				spawner.resetLevelKeep();
+				spawner.resetScoreKeep();
 			}
 		}
 		
@@ -131,20 +135,20 @@ public class Menus extends MouseAdapter{
 			
 		
 			g.setFont(fnt);
-			g.setColor(Color.white);
+			g.setColor(Color.black);
 			g.drawString("Collision!", 173, 70);
 			
 			
 			g.setFont(fnt2);
-			g.drawRect(210, 150, 200, 64);
-			g.drawString("Play", 270, 190);
+			//g.drawRect(275, 153, 80, 29);
+			g.drawString("Play", 280, 175);
 			
 			
-			g.drawRect(210, 250, 200, 64);
-			g.drawString("Help", 270, 290);
+			//g.drawRect(275, 202, 80, 29);
+			g.drawString("Help", 280, 225);
 			
-			g.drawRect(210, 350, 200, 64);
-			g.drawString("Quit", 270, 390);
+			//g.drawRect(275, 248, 80, 29);
+			g.drawString("Quit", 280, 270);
 			
 			
 		}else if (Game.gameState == STATE.Help) {
@@ -153,7 +157,7 @@ public class Menus extends MouseAdapter{
 			Font fnt3 = new Font("courier", 1, 20);
 			
 			g.setFont(fnt);
-			g.setColor(Color.white);
+			g.setColor(Color.black);
 			g.drawString("Help", 240, 70);
 			
 			g.setFont(fnt3);
@@ -172,7 +176,7 @@ public class Menus extends MouseAdapter{
 			Font fnt3 = new Font("courier", 1, 20);
 			
 			g.setFont(fnt);
-			g.setColor(Color.white);
+			g.setColor(Color.black);
 			g.drawString("Game Over!", 165, 70);
 			
 			g.setFont(fnt3);
@@ -189,20 +193,20 @@ public class Menus extends MouseAdapter{
 			
 		
 			g.setFont(fnt);
-			g.setColor(Color.white);
+			g.setColor(Color.black);
 			g.drawString("Select Difficulty", 62, 70);
 			
 			
 			g.setFont(fnt2);
-			g.drawRect(210, 150, 200, 64);
-			g.drawString("Normal", 258, 190);
+			//g.drawRect(260, 153, 113, 29);
+			g.drawString("Normal", 265, 175);
 			
 			
-			g.drawRect(210, 250, 200, 64);
-			g.drawString("Hard", 270, 290);
+			//g.drawRect(275, 202, 80, 29);
+			g.drawString("Hard", 280, 225);
 			
-			g.drawRect(210, 350, 200, 64);
-			g.drawString("Back", 270, 390);
+			//g.drawRect(275, 248, 80, 29);
+			g.drawString("Back", 280, 270);
 			
 			
 		}

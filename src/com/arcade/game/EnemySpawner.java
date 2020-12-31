@@ -8,6 +8,7 @@ public class EnemySpawner {
 	private HUD hud;
 	private Game game;
 	private int scoreKeep = 0;
+	private int levelKeep = 1;
 	private Random r = new Random();
 	
 	public EnemySpawner(GameObjHandler handler, HUD hud, Game game) {
@@ -27,93 +28,98 @@ public class EnemySpawner {
 	 * */
 	public void tick() {
 		scoreKeep++;
-		if(scoreKeep >= 100) {
+		if(scoreKeep >= 100 && levelKeep < 16) {
 			scoreKeep = 0;
 			hud.setLevel(hud.getLevel() + 1);	
-			
+			levelKeep++;
 			
 			if(game.diff == 0) {
 				
-				if(hud.getLevel() == 2) {
+				if(levelKeep == 2) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 				}
 				
-				else if(hud.getLevel() == 3) {
+				else if(levelKeep == 3) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 				}
-				else if(hud.getLevel() == 4) {
+				else if(levelKeep == 4) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 				}
-				else if(hud.getLevel() == 5) {
+				else if(levelKeep == 5) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 				}
-				else if(hud.getLevel() == 6) {
+				else if(levelKeep == 6) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 				}
-				else if(hud.getLevel() == 7) {
+				else if(levelKeep == 7) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 					
 				}
-				else if(hud.getLevel() == 8) {
+				else if(levelKeep == 8) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					
 				}
-				else if(hud.getLevel() == 9) {
+				else if(levelKeep == 9) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					
 				}
-				else if(hud.getLevel() == 10) {
+				else if(levelKeep == 10) {
 					handler.clearEnemies(); 
 					handler.addObject(new Enemy(275, -120, Type.Boss, handler));
 
 				}
+				
+				
 			}
 			else if(game.diff == 1) {
 				
-				if(hud.getLevel() == 2) {
+				if(levelKeep == 2) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 				}
 				
-				else if(hud.getLevel() == 3) {
+				else if(levelKeep == 3) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 				}
-				else if(hud.getLevel() == 4) {
+				else if(levelKeep == 4) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 				}
-				else if(hud.getLevel() == 5) {
+				else if(levelKeep == 5) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 				}
-				else if(hud.getLevel() == 6) {
+				else if(levelKeep == 6) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 				}
-				else if(hud.getLevel() == 7) {
+				else if(levelKeep == 7) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 					
 				}
-				else if(hud.getLevel() == 8) {
+				else if(levelKeep == 8) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					
 				}
-				else if(hud.getLevel() == 9) {
+				else if(levelKeep == 9) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					
 				}
-				else if(hud.getLevel() == 10) {
+				else if(levelKeep == 10) {
 					handler.clearEnemies(); 
 					handler.addObject(new Enemy(275, -120, Type.Boss, handler));
 
 				}
 			}
 			
-			
+			if(levelKeep == 15) {
+				levelKeep = 0;
+				handler.clearEnemies(); 
+			} 
 			
 			
 		}
@@ -121,5 +127,11 @@ public class EnemySpawner {
 		
 	}
 	
+	public void resetScoreKeep() {
+		this.scoreKeep = 0;
+	}
+	public void resetLevelKeep() {
+		this.levelKeep = 1;
+	}
 
 }
