@@ -67,13 +67,24 @@ public class Game extends Canvas implements Runnable{
 		this.addKeyListener(new Input(handler));
 		this.addMouseListener(menus);
 		this.addMouseListener(store);
-		for(int i = 0; i < 25; i++) {
-			if(i%2 == 0) handler.addObject(new Enemy(r.nextInt(100), 0, Type.Particle, handler));
-			else handler.addObject(new Enemy(r.nextInt(220) + 500, 400, Type.Particle, handler));
-				
-		}
+		spawnParticles();
 		MusicPlayer.load();
 		MusicPlayer.getMusic("track1").loop();
+	}
+	public void spawnParticles() {
+		int spacing = 24;
+		//Left side
+		handler.addObject(new Enemy(0, 0, Type.Particle, handler));
+		handler.addObject(new Enemy(spacing, 0, Type.Particle, handler));
+		handler.addObject(new Enemy(spacing*2, 0, Type.Particle, handler));
+		handler.addObject(new Enemy(spacing*3, 0, Type.Particle, handler));
+		handler.addObject(new Enemy(spacing*4, 0, Type.Particle, handler));
+		//Right side
+		handler.addObject(new Enemy(600, 400, Type.Particle, handler));
+		handler.addObject(new Enemy(600 - spacing, 400, Type.Particle, handler));
+		handler.addObject(new Enemy(600 - 2 * spacing , 400, Type.Particle, handler));
+		handler.addObject(new Enemy(600 - 3 * spacing, 400, Type.Particle, handler));
+		handler.addObject(new Enemy(600 - 4 * spacing, 400, Type.Particle, handler));
 	}
 	
 	public synchronized void start() {
@@ -128,11 +139,7 @@ public class Game extends Canvas implements Runnable{
 					HUD.HEALTH = 100;
 					gameState = STATE.End;
 					handler.clearEnemies();
-					for(int i = 0; i < 25; i++) {
-						if(i%2 == 0) handler.addObject(new Enemy(r.nextInt(100), 0, Type.Particle, handler));
-						else handler.addObject(new Enemy(r.nextInt(220) + 500, 400, Type.Particle, handler));
-							
-					}
+					spawnParticles();
 				}
 			}
 		}else if(gameState == STATE.Menu || gameState == STATE.End) {

@@ -2,6 +2,7 @@ package com.arcade.game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class Player extends GameObj{
 		xPos = Game.clamp(xPos, 0, Game.WIDTH-38);
 		yPos = Game.clamp(yPos, 0, Game.HEIGHT-61);
 		
-		handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, Color.black, 32, 32, 0.08f, handler));
+		handler.addObject(new FadeEffect(xPos, yPos, Type.FadeEffect, Color.black, 32, 32, 0.08f, handler));
 		collision();
 		
 	} 
@@ -64,10 +65,12 @@ public class Player extends GameObj{
 		
 	}
 
+
+
 	public void render(Graphics g) {
 		g.setColor(Color.black);
-		g.fillOval((int)xPos,(int)yPos, 32, 32);
-	
+		g.fillRect((int)xPos,(int)yPos, 32, 32);
+
 		
 	}
 

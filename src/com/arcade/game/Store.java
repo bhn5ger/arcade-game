@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import com.arcade.game.Game.STATE;
+
 public class Store extends MouseAdapter{
 	
 	GameObjHandler handler;
@@ -45,43 +47,42 @@ public class Store extends MouseAdapter{
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
-		
-		//Box 1
-		if(mx >= 100 && mx <= 200) {
-			if(my >= 100 && my <= 180) {
-				if(hud.getScore() >= prices[0]) {
-					hud.setScore(hud.getScore() - prices[0]);
-					prices[0] += 1000;
-					hud.bounds += 20;
-					HUD.HEALTH = (100 + (hud.bounds/2));
-				}
-				
-			}
-		}
-		//Box 2
-		if(mx >= 250 && mx <= 350) {
-			if(my >= 100 && my <= 180) {
-				if(hud.getScore() >= prices[1]) {
-					hud.setScore(hud.getScore() - prices[1]);
-					prices[1] += 1000;
-					handler.spd += 5;
-				}
-								
-				
-			}
-		}
-		//Box 3
-		if(mx >= 400 && mx <= 500) {
-			if(my >= 100 && my <= 180) {
-				if(hud.getScore() >= prices[2]) {
-					hud.setScore(hud.getScore() - prices[2]);
-					HUD.HEALTH = (100 + (hud.bounds/2));
+		if(Game.gameState == STATE.Shop) {
+			//Box 1
+			if(mx >= 100 && mx <= 200) {
+				if(my >= 100 && my <= 180) {
+					if(hud.getScore() >= prices[0]) {
+						hud.setScore(hud.getScore() - prices[0]);
+						prices[0] += 1000;
+						hud.bounds += 20;
+						HUD.HEALTH = (100 + (hud.bounds/2));
+					}
+					
 				}
 			}
+			//Box 2
+			if(mx >= 250 && mx <= 350) {
+				if(my >= 100 && my <= 180) {
+					if(hud.getScore() >= prices[1]) {
+						hud.setScore(hud.getScore() - prices[1]);
+						prices[1] += 1000;
+						handler.spd += 5;
+					}
+									
+					
+				}
+			}
+			//Box 3
+			if(mx >= 400 && mx <= 500) {
+				if(my >= 100 && my <= 180) {
+					if(hud.getScore() >= prices[2]) {
+						hud.setScore(hud.getScore() - prices[2]);
+						HUD.HEALTH = (100 + (hud.bounds/2));
+					}
+				}
+			}
 		}
-		
-		
-		
+	
 	}
 
 	public void setPrice(int index, int price) {
