@@ -100,6 +100,7 @@ public class Menus extends MouseAdapter{
 				store.setPrice(2, 1000);
 				spawner.resetLevelKeep();
 				spawner.resetScoreKeep();
+				spawner.resetIntensityFactor();
 			}
 		}
 		

@@ -9,7 +9,7 @@ public class Enemy extends GameObj{
 	private GameObjHandler handler;
 	private GameObj player;
 	Random r = new Random();
-	private int timer = 10;
+	private int timer = 50;
 	private int timer2 = 50;
 	private Color col;
 
@@ -29,11 +29,11 @@ public class Enemy extends GameObj{
 				if(handler.object.get(i).getId() == Type.Player) player = handler.object.get(i);
 			}
 		}
-		else if(id == Type.Boss) {
+		else if(id == Type.Cloud) {
 			xVel = 0;
 			yVel = 2;
 		}
-		else if(id == Type.Bullet) {
+		else if(id == Type.Rain) {
 			xVel = (r.nextInt(5 - -5) + -5);
 			yVel = 5;
 		}
@@ -51,8 +51,8 @@ public class Enemy extends GameObj{
 	}
 
 	public Rectangle getBounds() {
-		if(id == Type.Boss) {
-			return new Rectangle((int)xPos, (int)yPos, 96, 96); 
+		if(id == Type.Cloud) {
+			return new Rectangle((int)xPos, (int)yPos, 148, 96); 
 		}
 		else{
 			return new Rectangle((int)xPos, (int)yPos, 24, 24); 
@@ -82,18 +82,18 @@ public class Enemy extends GameObj{
 			yVel = ((-1/distance) * diffY);
 			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, new Color(0,102,102), 24, 24, 0.05f, handler));
 		}
-		else if(id == Type.Boss) {
+		else if(id == Type.Cloud) {
 			if(timer <= 0) yVel = 0;
 			else timer--;
 			if(timer <= 0) timer2--;
 			if(timer2 <= 0) {
 				if(xVel == 0) xVel = 2;
 				int spawn = r.nextInt(5);
-				if(spawn == 0) handler.addObject(new Enemy((int)xPos+48, (int)yPos+48, Type.Bullet, handler));	
+				if(spawn == 0) handler.addObject(new Enemy((int)xPos+48, (int)yPos+48, Type.Rain, handler));	
 			}
 			if(xPos <= 0 || xPos >= Game.WIDTH - 96) xVel *= -1;
 		}
-		else if(id == Type.Bullet) {
+		else if(id == Type.Rain) {
 			if(yPos>= Game.HEIGHT) handler.removeObject(this);
 			handler.addObject(new CircleFadeEffect(xPos, yPos, Type.CircleFadeEffect, new Color(0,102,51), 24, 24, 0.10f, handler));
 		}
@@ -128,10 +128,10 @@ public class Enemy extends GameObj{
 		else if(id == Type.Zombie) {
 			g.setColor(new Color(0,102,102));
 		}
-		else if(id == Type.Boss) {
-			g.setColor(Color.red);
+		else if(id == Type.Cloud) {
+			g.setColor(Color.gray);
 		}
-		else if(id == Type.Bullet) {
+		else if(id == Type.Rain) {
 			g.setColor(new Color(0,102,51));
 		}
 		else if(id == Type.Particle) {
@@ -142,8 +142,8 @@ public class Enemy extends GameObj{
 		}
 		
 		
-		if(id == Type.Boss) {
-			g.fillRect((int)xPos,(int)yPos, 96,96);
+		if(id == Type.Cloud) {
+			g.fillOval((int)xPos,(int)yPos, 148,96);
 		}
 		else {
 			g.fillOval((int)xPos,(int)yPos, 24, 24);

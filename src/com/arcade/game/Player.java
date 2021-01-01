@@ -47,7 +47,7 @@ public class Player extends GameObj{
 			if(tempObject.getId() == Type.Zombie && getBounds().intersects(tempObject.getBounds())) {
 				HUD.HEALTH -=1;
 			}
-			if(tempObject.getId() == Type.Bullet && getBounds().intersects(tempObject.getBounds())) {
+			if(tempObject.getId() == Type.Rain && getBounds().intersects(tempObject.getBounds())) {
 				HUD.HEALTH -=1;
 			}
 			if(tempObject.getId() == Type.Charger && getBounds().intersects(tempObject.getBounds())) {
@@ -56,7 +56,7 @@ public class Player extends GameObj{
 			if(tempObject.getId() == Type.Villan && getBounds().intersects(tempObject.getBounds())) {
 				HUD.HEALTH -=3;
 			}
-			if(tempObject.getId() == Type.Boss && getBounds().intersects(tempObject.getBounds())) {
+			if(tempObject.getId() == Type.Cloud && getBounds().intersects(tempObject.getBounds())) {
 				HUD.HEALTH -=50;
 			}
 				 
