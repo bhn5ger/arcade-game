@@ -64,6 +64,6 @@ public class Input extends KeyAdapter{
 	}
 	
 	
-	
+
 	
 }

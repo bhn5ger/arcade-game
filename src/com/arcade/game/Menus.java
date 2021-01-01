@@ -98,6 +98,8 @@ public class Menus extends MouseAdapter{
 				store.setPrice(0, 1000);
 				store.setPrice(1, 1000);
 				store.setPrice(2, 1000);
+				store.setPrice(3, 1000);
+				store.setPrice(4, 1000);
 				spawner.resetLevelKeep();
 				spawner.resetScoreKeep();
 				spawner.resetIntensityFactor();
@@ -134,12 +136,19 @@ public class Menus extends MouseAdapter{
 			Font fnt = new Font("courier", 3, 50);
 			Font fnt2 = new Font("courier", 1, 30);
 			
-		
+			//Player drawing
+			g.setColor(new Color(96, 96, 96));
+			g.fillRect(335, 46, 32, 32);
+			g.setColor(new Color(64, 64, 64));
+			g.fillRect(360, 34, 32, 32);
+			g.setColor(new Color(32, 32, 32));
+			g.fillRect(385, 24, 32, 32);
+			g.setColor(new Color(0, 0, 0));
+			g.fillRect(410, 12, 32, 32);
+			
 			g.setFont(fnt);
 			g.setColor(Color.black);
 			g.drawString("Collision!", 173, 70);
-			
-			
 			g.setFont(fnt2);
 			//g.drawRect(275, 153, 80, 29);
 			g.drawString("Play", 280, 175);
