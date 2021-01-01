@@ -39,7 +39,7 @@ public class Input extends KeyAdapter{
 		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
 		if(key == KeyEvent.VK_SPACE) {
 			if(Game.gameState == STATE.Game) {
-				Game.setGameColor(Color.gray);
+				Game.setGameColor(new Color(255,255,0));
 				Game.gameState = STATE.Shop;
 			} 
 			else if(Game.gameState == STATE.Shop) {

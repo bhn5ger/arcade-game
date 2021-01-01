@@ -27,7 +27,7 @@ public class Store extends MouseAdapter{
 		Font fnt4 = new Font("courier", 3, 15);
 		
 		g.setFont(fnt);
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.drawString("Store", 235, 65);
 		
 		g.setFont(fnt2);
