@@ -81,7 +81,7 @@ public class Menus extends MouseAdapter{
 		
 		
 		if(Game.gameState == STATE.Help) { //Back 
-			if(mouseOver(mx, my, 210, 350, 200, 64)) {
+			if(mouseOver(mx, my, 275, 390, 80, 29)) {
 				Game.gameState = STATE.Menu;
 				return;
 			
@@ -89,7 +89,7 @@ public class Menus extends MouseAdapter{
 		}
 		
 		if(Game.gameState == STATE.End) { //Play again 
-			if(mouseOver(mx, my, 210, 350, 200, 64)) {
+			if(mouseOver(mx, my, 230, 390, 171, 30)) {
 				Game.gameState = STATE.Menu;
 				hud.setLevel(1);
 				hud.setScore(0);
@@ -154,20 +154,47 @@ public class Menus extends MouseAdapter{
 		}else if (Game.gameState == STATE.Help) {
 			Font fnt = new Font("courier", 3, 50);
 			Font fnt2 = new Font("courier", 1, 30);
-			Font fnt3 = new Font("courier", 1, 20);
+			Font fnt3 = new Font("courier", 1, 15);
+			Font fnt4 = new Font("courier", 3, 15);
 			
 			g.setFont(fnt);
 			g.setColor(Color.black);
-			g.drawString("Help", 240, 70);
-			
-			g.setFont(fnt3);
-			g.drawString("Press WASD or arrow keys to move; press P", 50, 125);
-			g.drawString("to pause and space to use the store. Avoid", 50, 150);
-			g.drawString("Collision!", 50, 175);
+			g.drawString("Help", 255, 70);
 			
 			g.setFont(fnt2);
-			g.drawRect(210, 350, 200, 64);
-			g.drawString("Back", 270, 390);
+			//g.drawRect(275, 390, 80, 29);
+			g.drawString("Back", 280, 413);
+			
+			
+			g.setFont(fnt3);
+			//g.drawRect(44, 90, 535, 288);
+			g.drawString("The objective of this game is to survive by avoiding", 45, 98);
+			g.drawString("collisions.", 45, 110);
+			//Controls
+			g.drawRect(44, 118, 535, 44);
+			g.setFont(fnt4);
+			g.drawString("CONTROLS", 50, 134);
+			g.setFont(fnt3);
+			g.drawString("Press WASD or arrow keys to move; press P to pause and", 50, 145);
+			g.drawString("space to use the store.", 50, 158);
+			//Coins
+			g.drawRect(44, 162, 135, 223);
+			g.setFont(fnt4);
+			g.drawString("COINS", 50, 176);
+			g.setFont(fnt3);
+			g.drawString("Gather coins", 50, 187);
+			g.drawString("to increase", 50, 200);
+			g.drawString("score quicker", 50, 211);
+			g.drawString("to use in the", 50, 223);
+			g.drawString("store.", 50, 234);
+			//Enemies
+			g.drawRect(179, 162, 400, 223);
+			g.setFont(fnt4);
+			g.drawString("ENEMIES", 185, 176);
+			g.setFont(fnt3);
+			g.drawString("There are a variety of enemies, ranging", 185, 187);
+			g.drawString("from minions to zombies.", 185, 200);
+
 			
 			
 		}else if (Game.gameState == STATE.End) {
@@ -178,13 +205,14 @@ public class Menus extends MouseAdapter{
 			g.setFont(fnt);
 			g.setColor(Color.black);
 			g.drawString("Game Over!", 165, 70);
-			
+						
 			g.setFont(fnt3);
-			g.drawString("You lost with a score of: " + hud.getScore(), 125, 200);
-			
+			g.drawString("You lost with a score of:", 163, 175);
 			g.setFont(fnt2);
-			g.drawRect(210, 350, 200, 64);
-			g.drawString("Try Again", 230, 390);
+			g.drawString(""+ hud.getScore(), 279, 240);
+			
+			//g.drawRect(230, 390, 171, 30);
+			g.drawString("Try Again", 235, 413);
 			
 			
 		}else if(Game.gameState == STATE.Select) {
