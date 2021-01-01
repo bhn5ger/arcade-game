@@ -32,7 +32,7 @@ public class Coin extends GameObj{
 			GameObj tempObject = handler.object.get(i);
 
 			if(tempObject.getId() == Type.Player && getBounds().intersects(tempObject.getBounds())) {                             
-				hud.setScore(hud.getScore() + 500);
+				hud.setScore(hud.getScore() + 50000);
 				handler.removeObject(this);
 			}
 		}

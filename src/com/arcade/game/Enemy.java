@@ -43,8 +43,8 @@ public class Enemy extends GameObj{
 			col = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
 		}
 		else if(id == Type.Villan) {
-			xVel = 5;
-			yVel = 5;
+			xVel = 2;
+			yVel = 9;
 		}
 		
 		

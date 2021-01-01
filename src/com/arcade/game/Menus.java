@@ -163,22 +163,20 @@ public class Menus extends MouseAdapter{
 			g.drawString("Help", 255, 70);
 			
 			g.setFont(fnt2);
-			//g.drawRect(275, 390, 80, 29);
 			g.drawString("Back", 280, 413);
 			
 			
 			g.setFont(fnt3);
-			//g.drawRect(44, 90, 535, 288);
 			g.drawString("The objective of this game is to survive by avoiding", 45, 98);
 			g.drawString("collisions.", 45, 110);
-			//Controls
+			//Control Description
 			g.drawRect(44, 118, 535, 44);
 			g.setFont(fnt4);
 			g.drawString("CONTROLS", 50, 134);
 			g.setFont(fnt3);
 			g.drawString("Press WASD or arrow keys to move; press P to pause and", 50, 145);
 			g.drawString("space to use the store.", 50, 158);
-			//Coins
+			//Coin Description
 			g.drawRect(44, 162, 135, 223);
 			g.setFont(fnt4);
 			g.drawString("COINS", 50, 176);
@@ -193,15 +191,86 @@ public class Menus extends MouseAdapter{
 			g.fillRect(125, 280, 16, 16);
 			g.fillRect(72, 330, 16, 16);
 			g.setColor(Color.black);
-			//Enemies
+			//Enemy Descriptions
 			g.drawRect(179, 162, 400, 223);
 			g.setFont(fnt4);
 			g.drawString("ENEMIES", 185, 176);
 			g.setFont(fnt3);
-			g.drawString("There are a variety of enemies, ranging", 185, 187);
-			g.drawString("from minions to zombies.", 185, 200);
-
+			g.drawString("There are 6 types of enemies with a range", 185, 187);
+			g.drawString("of different characteristics.", 185, 200);
+			Font fnt5 = new Font("courier", 1, 11);
+			g.setFont(fnt5);
+			//Minion
+			g.setColor(new Color(51, 0, 102));
+			g.fillOval(200, 225, 24, 24);
+			g.setColor(Color.black);
+			g.drawString("Minions", 190, 260);
+			g.drawString("are most ", 190, 270);
+			g.drawString("common", 190, 280);
+			g.drawString("and do", 190, 290);
+			g.drawString("low", 190, 300);
+			g.drawString("damage", 190, 310);
+			//Charger
+			g.setColor(new Color(102,102,0));
+			g.fillOval(260, 225, 24, 24);
+			g.setColor(Color.black);
+			g.drawString("Chargers", 250, 260);
+			g.drawString("are", 250, 270);
+			g.drawString("quick", 250, 280);
+			g.drawString("and do", 250, 290);
+			g.drawString("medium ", 250, 300);
+			g.drawString("damage", 250, 310);
 			
+			//Zombie
+			g.setColor(new Color(0,102,102));
+			g.fillOval(320, 225, 24, 24);
+			g.setColor(Color.black);
+			g.drawString("Zombies", 313, 260);
+			g.drawString("follow", 313, 270);
+			g.drawString("you", 313, 280);
+			g.drawString("around", 313, 290);
+			g.drawString("slowly", 313, 300);
+			g.drawString("and do ", 313, 310);
+			g.drawString("low", 313, 320);
+			g.drawString("damage", 313, 330);
+			
+			//Villan
+			g.setColor(new Color(102,51,0));
+			g.fillOval(378, 225, 24, 24);
+			g.setColor(Color.black);
+			g.drawString("Villans", 370, 260);
+			g.drawString("are", 370, 270);
+			g.drawString("quick", 370, 280);
+			g.drawString("and do", 370, 290);
+			g.drawString("high", 370, 300);
+			g.drawString("damage", 370, 310);
+			
+			//Cloud
+			g.setColor(Color.gray);
+			g.fillOval(430, 207, 74, 48);
+			g.setColor(Color.black);
+			g.drawString("Clouds spawn", 432, 265);
+			g.drawString("at the end", 432, 275);
+			g.drawString("of each wave", 432, 285);
+			g.drawString("and do", 432, 295);
+			g.drawString("extemely", 432, 305);
+			g.drawString("high damage", 432, 315);
+			g.drawString("on impact", 432, 325);
+			
+			//Rain
+			g.setColor(new Color(0,102,51));
+			g.fillOval(535, 225, 24, 24);
+			g.setColor(Color.black);
+			g.drawString("Rain", 525, 260);
+			g.drawString("spawns", 525, 270);
+			g.drawString("rapidly", 525, 280);
+			g.drawString("from", 525, 290);
+			g.drawString("clouds", 525, 300);
+			g.drawString("and can", 525, 310);
+			g.drawString("do high", 525, 320);
+			g.drawString("damage", 525, 330);
+			g.drawString("in", 525, 340);
+			g.drawString("swarms", 525, 350);
 			
 		}else if (Game.gameState == STATE.End) {
 			Font fnt = new Font("courier", 3, 50);

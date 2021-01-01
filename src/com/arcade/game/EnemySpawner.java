@@ -106,7 +106,7 @@ public class EnemySpawner {
 				else if(levelKeep == 10) {
 					handler.clearEnemies(); 
 					for(int i = 0; i < intensityFactor; i++) {
-						handler.addObject(new Enemy(275, -120, Type.Cloud, handler));
+						handler.addObject(new Enemy(r.nextInt(301) + 100, -120, Type.Cloud, handler));
 						handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 						handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 						handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
