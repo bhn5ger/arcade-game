@@ -25,6 +25,9 @@ public class EnemySpawner {
 	 * 
 	 * handler.clearEnemies(); 
 	 * handler.addObject(new Enemy(275, -120, Type.Boss, handler));
+	 * 
+	 * handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
+	 * 
 	 * */
 	public void tick() {
 		scoreKeep++;
@@ -37,39 +40,51 @@ public class EnemySpawner {
 				
 				if(levelKeep == 2) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 				}
 				
 				else if(levelKeep == 3) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 				}
 				else if(levelKeep == 4) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 				}
 				else if(levelKeep == 5) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Charger, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 				}
 				else if(levelKeep == 6) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 				}
 				else if(levelKeep == 7) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Zombie, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 					
 				}
 				else if(levelKeep == 8) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 					
 				}
 				else if(levelKeep == 9) {
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
 					handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 					
 				}
 				else if(levelKeep == 10) {
 					handler.clearEnemies(); 
 					handler.addObject(new Enemy(275, -120, Type.Boss, handler));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
+					handler.addObject(new Coin(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Coin, handler, hud));
 
 				}
 				

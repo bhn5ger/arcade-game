@@ -17,7 +17,7 @@ public class HUD {
 		HEALTH = Game.clamp(HEALTH, 0, 100 + (bounds/2));
 		redValue = HEALTH * 2;
 		redValue = Game.clamp(redValue, 0, 255);
-		score+=10;
+		score++;
 		
 	}
 	public void render(Graphics g) {

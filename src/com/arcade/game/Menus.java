@@ -187,6 +187,11 @@ public class Menus extends MouseAdapter{
 			g.drawString("increase score", 50, 211);
 			g.drawString("to use in the", 50, 223);
 			g.drawString("store.", 50, 234);
+			g.setColor(Color.yellow);
+			g.fillRect(72, 260, 16, 16);
+			g.fillRect(125, 280, 16, 16);
+			g.fillRect(72, 330, 16, 16);
+			g.setColor(Color.black);
 			//Enemies
 			g.drawRect(179, 162, 400, 223);
 			g.setFont(fnt4);
