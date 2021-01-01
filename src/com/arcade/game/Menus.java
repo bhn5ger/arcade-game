@@ -262,7 +262,7 @@ public class Menus extends MouseAdapter{
 			g.drawString("at the end", 432, 275);
 			g.drawString("of each wave", 432, 285);
 			g.drawString("and do", 432, 295);
-			g.drawString("extemely", 432, 305);
+			g.drawString("extremely", 432, 305);
 			g.drawString("high damage", 432, 315);
 			g.drawString("on impact", 432, 325);
 			
@@ -293,7 +293,9 @@ public class Menus extends MouseAdapter{
 			g.setFont(fnt3);
 			g.drawString("You lost with a score of:", 163, 175);
 			g.setFont(fnt2);
-			g.drawString(""+ hud.getScore(), 279, 240);
+			if(hud.getScore() > 99999) g.drawString(""+ hud.getScore(), 260, 240);
+			else if(hud.getScore() > 9999) g.drawString(""+ hud.getScore(), 270, 240);
+			else g.drawString(""+ hud.getScore(), 279, 240);
 			
 			//g.drawRect(230, 390, 171, 30);
 			g.drawString("Try Again", 235, 413);

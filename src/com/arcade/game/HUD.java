@@ -1,6 +1,7 @@
 package com.arcade.game;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class HUD {
@@ -27,11 +28,13 @@ public class HUD {
 		g.fillRect(15, 400, (int)HEALTH * 2, 16);
 		g.setColor(Color.black);
 		g.drawRect(15, 400, 200 + bounds, 16);
-		
-		g.setColor(Color.white);
-		g.drawString("Score : " + score, 15, 362);
-		g.drawString("Level : " + level, 15, 377);
-		g.drawString("Space for Shop", 15, 392); 
+				
+		Font fnt3 = new Font("courier", 1, 15);
+		g.setFont(fnt3);
+		g.setColor(Color.black);
+		g.drawString("SCORE:" + score, 15, 362);
+		g.drawString("LEVEL:" + level, 15, 377);
+		g.drawString("STORE IS OPEN", 15, 392); 
 		
 		
 	}
