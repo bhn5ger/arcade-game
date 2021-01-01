@@ -183,8 +183,8 @@ public class Menus extends MouseAdapter{
 			g.drawString("COINS", 50, 176);
 			g.setFont(fnt3);
 			g.drawString("Gather coins", 50, 187);
-			g.drawString("to increase", 50, 200);
-			g.drawString("score quicker", 50, 211);
+			g.drawString("to instantly", 50, 200);
+			g.drawString("increase score", 50, 211);
 			g.drawString("to use in the", 50, 223);
 			g.drawString("store.", 50, 234);
 			//Enemies

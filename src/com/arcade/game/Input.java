@@ -1,5 +1,6 @@
 package com.arcade.game;
 
+import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -37,8 +38,14 @@ public class Input extends KeyAdapter{
 		}
 		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
 		if(key == KeyEvent.VK_SPACE) {
-			if(Game.gameState == STATE.Game) Game.gameState = STATE.Shop;
-			else if(Game.gameState == STATE.Shop)Game.gameState = STATE.Game;
+			if(Game.gameState == STATE.Game) {
+				Game.setGameColor(Color.gray);
+				Game.gameState = STATE.Shop;
+			} 
+			else if(Game.gameState == STATE.Shop) {
+				Game.setGameColor(new Color(51,0,25));
+				Game.gameState = STATE.Game;
+			}
 		}
 	}
 	public void keyReleased(KeyEvent e) {

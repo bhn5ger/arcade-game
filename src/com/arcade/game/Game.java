@@ -27,6 +27,7 @@ public class Game extends Canvas implements Runnable{
 	private EnemySpawner spawner;
 	private Menus menus;
 	private Store store;
+	private static Color gameColor = new Color(51,0,25);
 	
 	public enum STATE {
 		Menu, Help, Game, Select, Shop, End
@@ -155,7 +156,7 @@ public class Game extends Canvas implements Runnable{
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(new Color(51,0,25));
+		g.setColor(gameColor);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.red);
 		if(paused) {
@@ -185,6 +186,8 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	
-
+	public static void setGameColor(Color c) {
+		gameColor = c;
+	}
 	
 }

@@ -21,68 +21,93 @@ public class Store extends MouseAdapter{
 		
 	}
 	public void render (Graphics g) {
+		Font fnt = new Font("courier", 3, 50);
+		Font fnt2 = new Font("courier", 1, 30);
+		Font fnt3 = new Font("courier", 1, 15);
+		Font fnt4 = new Font("courier", 3, 15);
+		
+		g.setFont(fnt);
 		g.setColor(Color.white);
-		g.setFont(new Font("arial", 0, 48));
-		g.drawString("SHOP", Game.WIDTH/2 - 100, 50);
-		//box 1
-		g.setFont(new Font("arial", 0, 12));
-		g.drawString("Upgrade Health", 110, 120);
-		g.drawString("Cost: " + prices[0], 110, 140);
-		g.drawRect(100, 100, 100, 80);
-		//box 2
-		g.drawString("Upgrade Speed", 260, 120);
-		g.drawString("Cost: " + prices[1], 260, 140);
-		g.drawRect(250, 100, 100, 80);
-		//box 3
-		g.drawString("Refill Health", 410, 120);
-		g.drawString("Cost: " + prices[2], 410, 140);
-		g.drawRect(400, 100, 100, 80);
+		g.drawString("Store", 235, 65);
+		
+		g.setFont(fnt2);
+		g.drawString("Press Space to Go Back", 120, 413);
 		
 		
+		g.setFont(fnt3);
+		g.drawString("Click on a box to purchase the corresponding item. You", 45, 98);
+		g.drawString("currently have " + hud.getScore() + " score to spend.", 45, 110);
 		
-		g.drawString("SCORE: " + hud.getScore(), Game.WIDTH/2-50, 300);
-		g.drawString("Press space to go back", Game.WIDTH/2-50, 330);
+		g.drawRect(44, 118, 535, 44);
+		g.setFont(fnt4);
+		g.drawString("UPGRADE HEALTH", 50, 134);
+		g.setFont(fnt3);
+		g.drawString("Cost: " + prices[0], 50, 145);
+	
+		g.drawRect(44, 162, 135, 223);
+		g.setFont(fnt4);
+		g.drawString("UPGRADE SPEED", 50, 176);
+		g.setFont(fnt3);
+		g.drawString("Cost: " + prices[1], 50, 187);
+
+	
+		g.drawRect(179, 162, 400, 223);
+		g.setFont(fnt4);
+		g.drawString("REFILL HEALTH", 185, 176);
+		g.setFont(fnt3);
+		g.drawString("Cost: " + prices[2], 185, 187);
+		
+			
+	
+		
+	}
+	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+		if(mx > x && mx < x + width) {
+			if(my > y && my < y + height) {
+				return true;
+			}else return false;
+		}else return false;
+		
 		
 	}
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
 		if(Game.gameState == STATE.Shop) {
-			//Box 1
-			if(mx >= 100 && mx <= 200) {
-				if(my >= 100 && my <= 180) {
-					if(hud.getScore() >= prices[0]) {
-						hud.setScore(hud.getScore() - prices[0]);
-						prices[0] += 1000;
-						hud.bounds += 20;
-						HUD.HEALTH = (100 + (hud.bounds/2));
-					}
-					
+			if(mouseOver(mx, my, 44, 118, 535, 44)) {
+				
+				if(hud.getScore() >= prices[0]) {
+					hud.setScore(hud.getScore() - prices[0]);
+					prices[0] += 1000;
+					hud.bounds += 20;
+					HUD.HEALTH = (100 + (hud.bounds/2));
 				}
+				
+				
 			}
-			//Box 2
-			if(mx >= 250 && mx <= 350) {
-				if(my >= 100 && my <= 180) {
-					if(hud.getScore() >= prices[1]) {
-						hud.setScore(hud.getScore() - prices[1]);
-						prices[1] += 1000;
-						handler.spd += 5;
-					}
-									
-					
+
+			if(mouseOver(mx, my, 44, 162, 135, 223)) {
+				
+				if(hud.getScore() >= prices[1]) {
+					hud.setScore(hud.getScore() - prices[1]);
+					prices[1] += 1000;
+					handler.spd += 5;
 				}
+				
+				
 			}
-			//Box 3
-			if(mx >= 400 && mx <= 500) {
-				if(my >= 100 && my <= 180) {
-					if(hud.getScore() >= prices[2]) {
-						hud.setScore(hud.getScore() - prices[2]);
-						HUD.HEALTH = (100 + (hud.bounds/2));
+
+			if(mouseOver(mx, my, 179, 162, 400, 223)) {
+				
+				if(hud.getScore() >= prices[2]) {
+					hud.setScore(hud.getScore() - prices[2]);
+					HUD.HEALTH = (100 + (hud.bounds/2));
 					}
 				}
-			}
+				
+				
 		}
-	
+					
 	}
 
 	public void setPrice(int index, int price) {
