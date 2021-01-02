@@ -37,7 +37,8 @@ public class Store extends MouseAdapter{
 		g.setColor(Color.red);
 		g.drawString("" + hud.getScore(), 340, 110);
 		g.setColor(Color.black);
-		if(hud.getScore() > 0 && hud.getScore() <= 999)g.drawString("score to spend.", 375, 110);
+		if(hud.getScore() > 0 && hud.getScore() <= 99)g.drawString("score to spend.", 367, 110);
+		else if(hud.getScore() > 99 && hud.getScore() <= 999)g.drawString("score to spend.", 375, 110);
 		else if(hud.getScore() > 999 && hud.getScore() <= 9999)g.drawString(" score to spend.", 375, 110);
 		else if(hud.getScore() > 9999 && hud.getScore() <= 99999)g.drawString("  score to spend.", 375, 110);
 		else if(hud.getScore() > 99999 && hud.getScore() <= 999999)g.drawString("   score to spend.", 375, 110);

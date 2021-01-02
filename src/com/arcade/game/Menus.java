@@ -52,7 +52,7 @@ public class Menus extends MouseAdapter{
 		}
 		
 		if(Game.gameState == STATE.Select) {
-			if(mouseOver(mx, my, 260, 153, 113, 29)) { //Normal
+			if(mouseOver(mx, my, 275, 153, 80, 29)) { //Easy
 				Game.gameState = STATE.Game;
 				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, Type.Player, handler));
 				handler.clearEnemies();
@@ -61,16 +61,25 @@ public class Menus extends MouseAdapter{
 				game.diff = 0;
 				
 			}
-			if(mouseOver(mx, my, 275, 202, 80, 29)) { //Hard
+			if(mouseOver(mx, my, 262, 202, 110, 29)) { //Normal
 				Game.gameState = STATE.Game;
 				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, Type.Player, handler));
 				handler.clearEnemies();
-				handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Villan, handler));	
+				handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));	
 				
 				game.diff = 1;
 				
-			}			
-			if(mouseOver(mx, my, 275, 248, 80, 29)) {//Back
+			}
+			if(mouseOver(mx, my, 275, 248, 80, 29)) { //Hard
+				Game.gameState = STATE.Game;
+				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, Type.Player, handler));
+				handler.clearEnemies();
+				handler.addObject(new Enemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), Type.Minion, handler));	
+				
+				game.diff = 2;
+				
+			}	
+			if(mouseOver(mx, my, 275, 294, 80, 29)) {//Back
 				Game.gameState = STATE.Menu;
 				return;
 				 
@@ -137,10 +146,10 @@ public class Menus extends MouseAdapter{
 			Font fnt = new Font("courier", 3, 50);
 			Font fnt2 = new Font("courier", 1, 30);
 			
-			//Player drawing
+			//Player drawing    
 			g.setColor(new Color(96, 96, 96));
 			g.fillRect(335, 46, 32, 32);
-			g.setColor(new Color(64, 64, 64));
+			g.setColor(new Color(64, 64, 64)); 
 			g.fillRect(360, 34, 32, 32);
 			g.setColor(new Color(32, 32, 32));
 			g.fillRect(385, 24, 32, 32);
@@ -290,14 +299,34 @@ public class Menus extends MouseAdapter{
 			g.setFont(fnt);
 			g.setColor(Color.black);
 			g.drawString("Game Over!", 165, 70);
-						
-			g.setFont(fnt3);
-			g.drawString("You lost with a score of:", 163, 175);
-			g.setFont(fnt2);
-			if(hud.getScore() > 99999) g.drawString(""+ hud.getScore(), 260, 240);
-			else if(hud.getScore() > 9999) g.drawString(""+ hud.getScore(), 270, 240);
-			else g.drawString(""+ hud.getScore(), 279, 240);
 			
+			//Score message
+			g.setFont(fnt3);
+			g.drawString("You lost with a score of", 169, 125);
+			g.setFont(fnt2);
+			if(hud.getScore() > 99999) g.drawString(""+ hud.getScore(), 260, 170); //6 digits
+			else if(hud.getScore() > 9999) g.drawString(""+ hud.getScore(), 270, 170);//5 digits good
+			else if(hud.getScore() > 999)g.drawString(""+ hud.getScore(), 279, 170); //4 digits good
+			else if(hud.getScore() > 99)g.drawString(""+ hud.getScore(), 286, 170); //3 digits good
+			else if(hud.getScore() > 9)g.drawString(""+ hud.getScore(), 292, 170); //2 digits good
+			else g.drawString(""+ hud.getScore(), 279, 170); //1 digit
+			
+			
+			//Level message
+			g.setFont(fnt3);
+			g.drawString("On level", 267, 205);
+			g.setFont(fnt2);
+			g.setColor(Color.red);
+			if(hud.getLevel() > 99) g.drawString(""+ hud.getLevel(), 289, 240); //3 digits good
+			else if(hud.getLevel() > 9) g.drawString(""+ hud.getLevel(), 294, 240); //2 digits good
+			else g.drawString(""+ hud.getLevel(), 304, 240); //1 digit good
+			g.setColor(Color.black);
+			//Difficulty message
+			g.setFont(fnt3);
+			if(game.diff == 0)g.drawString("On easy difficulty.", 217, 270);
+			else if(game.diff == 1)g.drawString("On normal difficulty.", 202, 270);
+			else if(game.diff == 2)g.drawString("On hard difficulty.", 217, 270);
+			g.setFont(fnt2);
 			//g.drawRect(230, 390, 171, 30);
 			g.drawString("Try Again", 235, 413);
 			
@@ -311,17 +340,23 @@ public class Menus extends MouseAdapter{
 			g.setColor(Color.black);
 			g.drawString("Select Difficulty", 62, 70);
 			
-			
+			//Hitbox dimensions are in comments
 			g.setFont(fnt2);
-			//g.drawRect(260, 153, 113, 29);
-			g.drawString("Normal", 265, 175);
+			//g.drawRect(275, 153, 80, 29);
+			g.setColor(new Color(0, 102, 0));
+			g.drawString("Easy", 280, 175);
 			
-			
-			//g.drawRect(275, 202, 80, 29);
-			g.drawString("Hard", 280, 225);
+			//g.drawRect(262, 202, 110, 29);
+			g.setColor(new Color(0, 51, 102));
+			g.drawString("Normal", 265, 225);
 			
 			//g.drawRect(275, 248, 80, 29);
-			g.drawString("Back", 280, 270);
+			g.setColor(new Color(102, 0, 0));
+			g.drawString("Hard", 280, 270);
+			
+			//g.drawRect(275, 294, 80, 29);
+			g.setColor(Color.black);
+			g.drawString("Back", 280, 316);
 			
 			
 		}
