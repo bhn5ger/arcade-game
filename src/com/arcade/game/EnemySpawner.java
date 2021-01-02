@@ -176,7 +176,13 @@ public class EnemySpawner {
 	public void resetLevelKeep() {
 		this.levelKeep = 1;
 	}
-	public void resetIntensityFactor() {
-		this.intensityFactor = 1;
+	public void setIntensityFactor(int x) {
+		this.intensityFactor = x;
 	}
+	public int getIntensityFactor() {
+		return this.intensityFactor;
+	}
+	
+	
+	
 }

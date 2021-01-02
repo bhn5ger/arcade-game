@@ -8,6 +8,7 @@ public class Coin extends GameObj{
 
 	private GameObjHandler handler;
 	private HUD hud;
+	public static int coinBonus = 400;
 	
 	public Coin(int x, int y, Type id, GameObjHandler handler, HUD hud) {
 		super(x, y, id);
@@ -32,7 +33,7 @@ public class Coin extends GameObj{
 			GameObj tempObject = handler.object.get(i);
 
 			if(tempObject.getId() == Type.Player && getBounds().intersects(tempObject.getBounds())) {                             
-				hud.setScore(hud.getScore() + 50000);
+				hud.setScore(hud.getScore() + coinBonus);
 				handler.removeObject(this);
 			}
 		}
@@ -46,5 +47,6 @@ public class Coin extends GameObj{
 
 		
 	}
+	
 
 }

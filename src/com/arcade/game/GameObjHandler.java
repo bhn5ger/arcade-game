@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class GameObjHandler { 
 	
 	LinkedList<GameObj> object = new LinkedList<GameObj>();
-	public int spd = 10;
+	public int spd = 5;
 	
 	public void tick() {
 		for(int i = 0; i<object.size(); i++) {

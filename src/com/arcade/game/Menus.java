@@ -93,16 +93,17 @@ public class Menus extends MouseAdapter{
 				Game.gameState = STATE.Menu;
 				hud.setLevel(1);
 				hud.setScore(0);
-				handler.setSpeed(10);
+				handler.setSpeed(5);
 				hud.setBounds(0);
 				store.setPrice(0, 1000);
 				store.setPrice(1, 1000);
 				store.setPrice(2, 1000);
-				store.setPrice(3, 1000);
-				store.setPrice(4, 1000);
+				store.setPrice(3, 5000);
+				store.setPrice(4, 100);
 				spawner.resetLevelKeep();
 				spawner.resetScoreKeep();
-				spawner.resetIntensityFactor();
+				spawner.setIntensityFactor(1);
+				Coin.coinBonus = 400;
 			}
 		}
 		

@@ -61,8 +61,8 @@ public class Game extends Canvas implements Runnable{
 	public Game() {
 		handler = new GameObjHandler(); 
 		hud = new HUD();
-		store = new Store(handler, hud); 
 		spawner = new EnemySpawner(handler, hud, this);
+		store = new Store(handler, hud, spawner); 
 		menus = new Menus(this, handler, hud, store, spawner); 
 		new Window(WIDTH, HEIGHT, "Game", this);
 		this.addKeyListener(new Input(handler));

@@ -12,18 +12,20 @@ public class Store extends MouseAdapter{
 	
 	GameObjHandler handler;
 	HUD hud;
-	private int [] prices = {1000, 1000, 1000, 1000, 1000};
+	EnemySpawner spawner;
+	private int [] prices = {1000, 1000, 1000, 5000, 100};
 	
-	public Store(GameObjHandler handler, HUD hud) {
+	public Store(GameObjHandler handler, HUD hud, EnemySpawner spawner) {
 		this.handler = handler;
 		this.hud = hud;
-		
+		this.spawner = spawner;
 		
 	}
 	public void render (Graphics g) {
 		Font fnt = new Font("courier", 3, 50);
 		Font fnt3 = new Font("courier", 1, 15);
 		Font fnt4 = new Font("courier", 3, 15);
+		Font fnt5 = new Font("courier", 1, 11);
 		
 		g.setFont(fnt);
 		g.setColor(Color.black);
@@ -31,7 +33,15 @@ public class Store extends MouseAdapter{
 		
 		g.setFont(fnt3);
 		g.drawString("Click the buy button to purchase the corresponding item and", 45, 98);
-		g.drawString("press space to go back. You have " + hud.getScore() + " score to spend.", 45, 110);
+		g.drawString("press space to go back. You have", 45, 110);
+		g.setColor(Color.red);
+		g.drawString("" + hud.getScore(), 340, 110);
+		g.setColor(Color.black);
+		if(hud.getScore() > 0 && hud.getScore() <= 999)g.drawString("score to spend.", 375, 110);
+		else if(hud.getScore() > 999 && hud.getScore() <= 9999)g.drawString(" score to spend.", 375, 110);
+		else if(hud.getScore() > 9999 && hud.getScore() <= 99999)g.drawString("  score to spend.", 375, 110);
+		else if(hud.getScore() > 99999 && hud.getScore() <= 999999)g.drawString("   score to spend.", 375, 110);
+		else g.drawString("    score to spend.", 375, 110);
 		
 		//outline
 		g.drawRect(44, 118, 530, 267);
@@ -45,6 +55,14 @@ public class Store extends MouseAdapter{
 		g.drawString("Costs", 83, 201);
 		g.drawString("" + prices[0], 85, 216);
 		g.drawString("Score", 83, 231);
+		
+		g.setFont(fnt5);
+		g.drawString("Max health", 73, 253);
+		g.drawString("is currently", 67, 263);
+		if((100 + (hud.bounds/2)) < 300) g.drawString("" + (100 + (hud.bounds/2)), 95, 273);
+		else g.drawString("" + (100 + (hud.bounds/2)) +"(max)", 80, 273);
+		g.setFont(fnt3);
+		
 		g.drawRect(74, 330, 66, 23);
 		g.drawString("Buy", 94, 345);
 		
@@ -57,6 +75,14 @@ public class Store extends MouseAdapter{
 		g.drawString("Costs", 185, 201);
 		g.drawString("" + prices[1], 189, 216);
 		g.drawString("Score", 185, 231);
+		
+		g.setFont(fnt5);
+		g.drawString("Health", 187, 253);
+		g.drawString("is currently", 167, 263);
+		if(HUD.HEALTH == (100 + (hud.bounds/2))) g.drawString((int)HUD.HEALTH + "/" + (100 + (hud.bounds/2)) + "(max)", 167, 273);
+		else g.drawString((int)HUD.HEALTH + "/" + (100 + (hud.bounds/2)), 185, 273);
+		g.setFont(fnt3);
+		
 		g.drawRect(175, 330, 66, 23);
 		g.drawString("Buy", 196, 345);
 	
@@ -69,6 +95,14 @@ public class Store extends MouseAdapter{
 		g.drawString("Costs", 285, 201);
 		g.drawString("" + prices[2], 289, 216);
 		g.drawString("Score", 285, 231);
+		
+		g.setFont(fnt5);
+		g.drawString("Speed", 290, 253);
+		g.drawString("is currently", 267, 263);
+		if(handler.spd == 15) g.drawString(handler.spd + "(max)", 285, 273);
+		else g.drawString("" + handler.spd, 304, 273);
+		g.setFont(fnt3);
+		
 		g.drawRect(276, 330, 66, 23);
 		g.drawString("Buy", 297, 345);
 
@@ -81,6 +115,14 @@ public class Store extends MouseAdapter{
 		g.drawString("Costs", 385, 201);
 		g.drawString("" + prices[3], 389, 216);
 		g.drawString("Score", 385, 231);
+		
+		g.setFont(fnt5);
+		g.drawString("Intensity", 380, 253);
+		g.drawString("is currently", 369, 263);
+		if(spawner.getIntensityFactor() == 1) g.drawString(spawner.getIntensityFactor() + "(min)", 388, 273);
+		else g.drawString("" + spawner.getIntensityFactor(), 406, 273);
+		g.setFont(fnt3);
+		
 		g.drawRect(377, 330, 66, 23);
 		g.drawString("Buy", 398, 345);
 		
@@ -93,8 +135,17 @@ public class Store extends MouseAdapter{
 		g.drawString("REWARD", 482, 170);
 		g.setFont(fnt3);
 		g.drawString("Costs", 487, 201);
-		g.drawString("" + prices[4], 492, 216);
+		g.drawString("" + prices[4], 494, 216);
 		g.drawString("Score", 487, 231);
+		
+		g.setFont(fnt5);
+		g.drawString("Coin Reward", 473, 253);
+		g.drawString("is currently", 469, 263);
+		if(Coin.coinBonus >= 2500) g.drawString(Coin.coinBonus + "(max)", 484, 273);
+		else if(Coin.coinBonus >= 999) g.drawString("" + Coin.coinBonus, 496, 273);
+		else g.drawString("" + Coin.coinBonus, 500, 273);
+		g.setFont(fnt3);
+		
 		g.drawRect(478, 330, 66, 23);
 		g.drawString("Buy", 499, 345);
 		
@@ -112,9 +163,10 @@ public class Store extends MouseAdapter{
 		int mx = e.getX();
 		int my = e.getY();
 		if(Game.gameState == STATE.Shop) {
+			//Upgrade health
 			if(mouseOver(mx, my, 74, 330, 66, 23)) {
 				
-				if(hud.getScore() >= prices[0]) {
+				if(hud.getScore() >= prices[0] && (100 + (hud.bounds/2)) < 300) {
 					hud.setScore(hud.getScore() - prices[0]);
 					prices[0] += 1000;
 					hud.bounds += 20;
@@ -123,26 +175,48 @@ public class Store extends MouseAdapter{
 				
 				
 			}
-
-			if(mouseOver(mx, my, 175, 330, 66, 23)) {
+			//Refill Health
+			if(mouseOver(mx, my, 175, 330, 66, 23) && (HUD.HEALTH != (100 + (hud.bounds/2)))) {
 				
 				if(hud.getScore() >= prices[1]) {
 					hud.setScore(hud.getScore() - prices[1]);
+					prices[1] += 600;
 					HUD.HEALTH = (100 + (hud.bounds/2));
 					}
 				}
-			
-			if(mouseOver(mx, my, 276, 330, 66, 23)) {
+			//Upgrade speed
+			if(mouseOver(mx, my, 276, 330, 66, 23) && (handler.spd < 15)) {
 				
 				if(hud.getScore() >= prices[2]) {
 					hud.setScore(hud.getScore() - prices[2]);
 					prices[2] += 1000;
-					handler.spd += 5;
+					handler.spd += 1;
 				}
 				
 				
 			}
-
+			//Decrease Intensity
+			if(mouseOver(mx, my, 377, 330, 66, 23)) {
+				
+				if(hud.getScore() >= prices[3] && spawner.getIntensityFactor() > 1) {
+					hud.setScore(hud.getScore() - prices[3]);
+					prices[3] += 10000;
+					spawner.setIntensityFactor(spawner.getIntensityFactor() - 1);
+				}
+				
+				
+			}
+			//Increase Coin Reward
+			if(mouseOver(mx, my, 478, 330, 66, 23)) {
+				
+				if(hud.getScore() >= prices[4] && Coin.coinBonus < 2500) {
+					hud.setScore(hud.getScore() - prices[4]);
+					prices[4] += 200;
+					Coin.coinBonus += 350;
+				}
+				
+				
+			}
 				
 				
 		}
