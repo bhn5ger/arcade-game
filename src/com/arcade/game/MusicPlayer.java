@@ -11,7 +11,7 @@ public class MusicPlayer {
 	
 	public static void load() {
 		try {
-			songs.put("track1", new Music("res/Lil Uzi Vert - Futsal Shuffle 2020 [Official Audio].ogg"));
+			songs.put("track1", new Music("res/Lil-Uzi-Vert-Futsal-Shuffle-Instrumental.ogg"));
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
