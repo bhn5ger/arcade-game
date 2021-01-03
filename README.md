@@ -16,7 +16,7 @@ Selecting help from the opening screen displays information described in the ove
 Selecting play from the opening screen allows the player to select from easy, normal, hard, and back. Selecting back returns to the opening screen. Compared to normal, easy begins with 0.5x the amount of enemies and hard begins with 1.5x the amount of enemies. However, each difficulty has identical coin spawning patterns, store prices, and other variables that affect gameplay. See the screenshot below.
 
 ## HUD (in-game) ##
-Selecting any difficulty begins the game, and presents a HUD which displays player score, level, and health.
+Selecting any difficulty begins the game, and reveals a HUD which displays player score, level, and health. While playing, the score increases indefinitely at a constant rate and can also instantly increase by gathering coins. Score decreases when spent in the store. Similar to score, level increases indefinitely at a constant rate. Enemy spawning becomes intesified at the end of every level with clouds and rain (every 20 levels). The health bar becomes smaller and less red when colliding, and it can refill and grow its bounds if score is spent in the shop. See screenshot below.
 
 ## Store (in-game) ##
 
