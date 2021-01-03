@@ -4,6 +4,8 @@
 ## Overview ##
 As stated above, the objective is to survive as long as possible by avoiding collisions with enemies. The menu system is animated includes a way to get help and select difficulty. The controls to play the entire game are either WASD or arrow keys to move, space to use the shop, p to pause, and mouse click to use buttons. In-game, there is a HUD to display player information, and there are 6 types of enemies with different colors, speeds, damage ability, and other characteristics, along with numerous levels with varying enemy spawn intensities. To make the game more enjoyable, there are also coins that spawn in-game with a store to spend them in and music that plays in the background. Below is a full demonstration of the game from the opening screen to the losing screen.
 
+![overview](https://user-images.githubusercontent.com/72827220/103486120-554ff200-4dc9-11eb-9da2-7932bf4a1dbb.gif)
+
 There are 6 main states of the game that are either a part of the menus or seen in-game: the opening screen, help screen, select difficulty screen, HUD, store, and losing screen. Each are explained in detail below. 
 
 ## Opening Screen (menu) ##
