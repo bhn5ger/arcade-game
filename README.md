@@ -34,7 +34,7 @@ Upgrading health increases max health and also refills it, with a starting cost 
 ## Losing Screen (menu) ##
 Fully depleting health from too many collisions while playing reveals a losing screen, summarizing score and level at the point of losing and difficulty played. There is a try again button at the bottom to return to the opening screen. See the screenshot below.
 
-![losingScreen](https://user-images.githubusercontent.com/72827220/103485036-5e3cc580-4dc1-11eb-811a-c9e4d31ea65b.gif)
+![endScreen](https://user-images.githubusercontent.com/72827220/103485158-60ebea80-4dc2-11eb-8256-749ddbbbf8bc.gif)
 
 ## Unit Testing ##
 
