@@ -10,7 +10,9 @@ There are 6 main states of the game that are either a part of the menus or seen 
 The opening screen is the main menu and allows the player to select play, help, or quit. See below.
 
 ## Help Screen (menu) ##
-Selecting help from the opening screen displays information described in the overview section above with pictures. There is a back button to return to the opening screen. See the screenshot below.
+Selecting help from the opening screen displays information described in the overview section above with pictures. There is a back button at the bottom to return to the opening screen. See the screenshot below.
+
+![help](https://user-images.githubusercontent.com/72827220/103484098-36962f00-4dba-11eb-8743-ebf4be03c460.JPG)
 
 ## Select Difficulty Screen (menu) ##
 Selecting play from the opening screen allows the player to select from easy, normal, hard, and back. Selecting back returns to the opening screen. Compared to normal, easy begins with 0.5x the amount of enemies and hard begins with 1.5x the amount of enemies. However, each difficulty has identical coin spawning patterns, store prices, and other variables that affect gameplay. See the screenshot below.
@@ -24,7 +26,7 @@ Pressing space while in-game displays a store with prices and messages that upda
 Upgrading health increases max health and also refills it, with a starting cost of 1,000 score to begin upgrading from 100 max health. After purchasing, max health increases by 10 and cost increases by 1,000. Once max health reaches 300 and cost reaches 21,000, this upgrade is no longer purchasable. Refilling health does what its name implies, with a starting cost of 1,000 score. After purchasing, cost increases by 600. This upgrade is always purchasable as long as health is not completely refilled. Upgrading speed also does what its name implies, with a starting cost of 1,000 score to begin upgrading from 5 speed. After purchasing, speed increases by 1 and cost increases by 1,000. Once speed reaches 15 and cost reaches 11,000, this upgrade is no longer purchasable. Decreasing intensity decreases the number of enemies that spawn, with a starting cost of 5,000 score to begin decreasing from an intensity factor of 2. After purchasing, intensity decreases by 1 and cost increases by 10,000. This upgrade is always purchasable as long as intensity is greater than 1. Increasing coin reward increases the score gained from gathering coins, with a starting cost of only 100 score to begin upgrading from a 400 coin reward. After purchasing, coin reward increases by 350 and cost increases by 200. Once the coin reward reaches 2,500 and cost reaches 1,300, this upgrade is no longer purchasable. See demonstration below.
 
 ## Losing Screen (menu) ##
-
+Fully depleting health from too many collisions while playing reveals a losing screen, summarizing score and level at the point of losing and difficulty played. There is a try again button at the bottom to return to the opening screen. See the screenshot below.
 
 ## Unit Testing ##
 
