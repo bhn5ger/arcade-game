@@ -12,10 +12,12 @@ The opening screen is the main menu and allows the player to select play, help, 
 ## Help Screen (menu) ##
 Selecting help from the opening screen displays information described in the overview section above with pictures. There is a back button at the bottom to return to the opening screen. See the screenshot below.
 
-![help](https://user-images.githubusercontent.com/72827220/103484098-36962f00-4dba-11eb-8743-ebf4be03c460.JPG)
+![help](https://user-images.githubusercontent.com/72827220/103484508-52e79b00-4dbd-11eb-8d3c-5f844222aef2.png)
 
 ## Select Difficulty Screen (menu) ##
 Selecting play from the opening screen allows the player to select from easy, normal, hard, and back. Selecting back returns to the opening screen. Compared to normal, easy begins with 0.5x the amount of enemies and hard begins with 1.5x the amount of enemies. However, each difficulty has identical coin spawning patterns, store prices, and other variables that affect gameplay. See the screenshot below.
+
+![difficulty](https://user-images.githubusercontent.com/72827220/103484515-5b3fd600-4dbd-11eb-9ab7-176aa71b5018.png)
 
 ## HUD (in-game) ##
 Selecting any difficulty begins the game, and reveals a HUD which displays player score, level, and health. While playing, the score increases indefinitely at a constant rate and can also instantly increase by gathering coins. Score decreases when spent in the store. Similar to score, level increases indefinitely at a constant rate. Enemy spawning becomes intesified at the end of every level with clouds and rain (every 20 levels). The health bar becomes smaller and less red when colliding, and it can refill and grow its bounds if score is spent in the shop. See screenshot below.
