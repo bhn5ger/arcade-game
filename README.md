@@ -22,13 +22,19 @@ Selecting play from the opening screen allows the player to select from easy, no
 ## HUD (in-game) ##
 Selecting any difficulty begins the game, and reveals a HUD which displays player score, level, and health. While playing, the score increases indefinitely at a constant rate and can also instantly increase by gathering coins. Score decreases when spent in the store. Similar to score, level increases indefinitely at a constant rate. Enemy spawning becomes intesified at the end of every level with clouds and rain (every 20 levels). The health bar becomes smaller and less red when colliding, and it can refill and grow its bounds if score is spent in the shop. See screenshot below.
 
+![HUD](https://user-images.githubusercontent.com/72827220/103485034-5d0b9880-4dc1-11eb-8f1c-ad82bd392024.png)
+
 ## Store (in-game) ## 
-Pressing space while in-game displays a store with prices and messages that update in real time and reveals five purchasable upgrades: upgrade health, refill health, upgrade speed, decrease intensity, and increase coin reward. See screenshot below.
+Pressing space while in-game pauses the game and displays a store with prices and messages that update in real time and reveals five purchasable upgrades: upgrade health, refill health, upgrade speed, decrease intensity, and increase coin reward. See screenshot below.
+
+![store](https://user-images.githubusercontent.com/72827220/103485037-5f6df280-4dc1-11eb-880d-1a349a539b17.png)
 
 Upgrading health increases max health and also refills it, with a starting cost of 1,000 score to begin upgrading from 100 max health. After purchasing, max health increases by 10 and cost increases by 1,000. Once max health reaches 300 and cost reaches 21,000, this upgrade is no longer purchasable. Refilling health does what its name implies, with a starting cost of 1,000 score. After purchasing, cost increases by 600. This upgrade is always purchasable as long as health is not completely refilled. Upgrading speed also does what its name implies, with a starting cost of 1,000 score to begin upgrading from 5 speed. After purchasing, speed increases by 1 and cost increases by 1,000. Once speed reaches 15 and cost reaches 11,000, this upgrade is no longer purchasable. Decreasing intensity decreases the number of enemies that spawn, with a starting cost of 5,000 score to begin decreasing from an intensity factor of 2. After purchasing, intensity decreases by 1 and cost increases by 10,000. This upgrade is always purchasable as long as intensity is greater than 1. Increasing coin reward increases the score gained from gathering coins, with a starting cost of only 100 score to begin upgrading from a 400 coin reward. After purchasing, coin reward increases by 350 and cost increases by 200. Once the coin reward reaches 2,500 and cost reaches 1,300, this upgrade is no longer purchasable. See demonstration below.
 
 ## Losing Screen (menu) ##
 Fully depleting health from too many collisions while playing reveals a losing screen, summarizing score and level at the point of losing and difficulty played. There is a try again button at the bottom to return to the opening screen. See the screenshot below.
+
+![losingScreen](https://user-images.githubusercontent.com/72827220/103485036-5e3cc580-4dc1-11eb-811a-c9e4d31ea65b.gif)
 
 ## Unit Testing ##
 
