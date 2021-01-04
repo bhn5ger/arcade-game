@@ -61,11 +61,11 @@ public class Game extends Canvas implements Runnable{
 	public Game() {
 		handler = new GameObjHandler(); 
 		hud = new HUD();
-		spawner = new EnemySpawner(handler, hud, this);
-		store = new Store(handler, hud, spawner); 
-		menus = new Menus(this, handler, hud, store, spawner); 
-		new Window(WIDTH, HEIGHT, "Game", this);
-		this.addKeyListener(new Input(handler));
+		spawner = new EnemySpawner(getHandler(), getHud(), this);
+		store = new Store(getHandler(), getHud(), spawner); 
+		menus = new Menus(this, getHandler(), getHud(), store, spawner); 
+		new Window(WIDTH, HEIGHT, "Collision!", this);
+		this.addKeyListener(new Input(getHandler()));
 		this.addMouseListener(menus);
 		this.addMouseListener(store);
 		spawnParticles();
@@ -75,17 +75,17 @@ public class Game extends Canvas implements Runnable{
 	public void spawnParticles() {
 		int spacing = 24;
 		//Left side
-		handler.addObject(new Enemy(0, 0, Type.Particle, handler));
-		handler.addObject(new Enemy(spacing, 0, Type.Particle, handler));
-		handler.addObject(new Enemy(spacing*2, 0, Type.Particle, handler));
-		handler.addObject(new Enemy(spacing*3, 0, Type.Particle, handler));
-		handler.addObject(new Enemy(spacing*4, 0, Type.Particle, handler));
+		getHandler().addObject(new Enemy(0, 0, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(spacing, 0, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(spacing*2, 0, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(spacing*3, 0, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(spacing*4, 0, Type.Particle, getHandler()));
 		//Right side
-		handler.addObject(new Enemy(600, 400, Type.Particle, handler));
-		handler.addObject(new Enemy(600 - spacing, 400, Type.Particle, handler));
-		handler.addObject(new Enemy(600 - 2 * spacing , 400, Type.Particle, handler));
-		handler.addObject(new Enemy(600 - 3 * spacing, 400, Type.Particle, handler));
-		handler.addObject(new Enemy(600 - 4 * spacing, 400, Type.Particle, handler));
+		getHandler().addObject(new Enemy(600, 400, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(600 - spacing, 400, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(600 - 2 * spacing , 400, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(600 - 3 * spacing, 400, Type.Particle, getHandler()));
+		getHandler().addObject(new Enemy(600 - 4 * spacing, 400, Type.Particle, getHandler()));
 	}
 	
 	public synchronized void start() {
@@ -121,7 +121,7 @@ public class Game extends Canvas implements Runnable{
 			
 			if(System.currentTimeMillis() - timer >1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				//System.out.println("FPS: " + frames);
 				frames = 0;
 			}
 		}
@@ -133,19 +133,19 @@ public class Game extends Canvas implements Runnable{
 		if(gameState == STATE.Game) {
 			if(!paused)
 			{
-				handler.tick();
-				hud.tick();
+				getHandler().tick();
+				getHud().tick();
 				spawner.tick();	
 				if(HUD.HEALTH <= 0) {
 					HUD.HEALTH = 100;
 					gameState = STATE.End;
-					handler.clearEnemies();
+					getHandler().clearEnemies();
 					spawnParticles();
 				}
 			}
 		}else if(gameState == STATE.Menu || gameState == STATE.End) {
 			menus.tick();
-			handler.tick();
+			getHandler().tick();
 		}
 	}
 	
@@ -165,15 +165,15 @@ public class Game extends Canvas implements Runnable{
 		}
 		g.setColor(Color.black);
 		if(gameState == STATE.Game) {
-			hud.render(g);
-			handler.render(g);
+			getHud().render(g);
+			getHandler().render(g);
 		}else if(gameState == STATE.Shop) {
 			store.render(g);
 		}else if(gameState == STATE.Help || gameState == STATE.Select) {
 			menus.render(g);
 		}else if(gameState == STATE.Menu || gameState == STATE.End) { 
 			menus.render(g);
-			handler.render(g);
+			getHandler().render(g);
 		}
 		g.dispose();
 		bs.show();
@@ -188,6 +188,12 @@ public class Game extends Canvas implements Runnable{
 	
 	public static void setGameColor(Color c) {
 		gameColor = c;
+	}
+	public GameObjHandler getHandler() {
+		return handler;
+	}
+	public HUD getHud() {
+		return hud;
 	}
 	
 }
