@@ -43,7 +43,7 @@ Fully depleting health from too many collisions while playing reveals a losing s
 ## Unit Testing ##
 Because the positions of game objects rely heavily on a random number generator, JUnit tests were written to make sure game objects would spawn and stay within the frame. As seen below, each game object after spawning and some movement was at a position within the frame as expected.
 
-![junit](https://user-images.githubusercontent.com/72827220/103494231-cca27780-4e03-11eb-8dff-42474e103aae.gif)
+![junit](https://user-images.githubusercontent.com/72827220/103494260-01163380-4e04-11eb-8471-0d9bbe1c0f07.gif)
 
 ## To be implemented ##
 More enemies, upgrades, and power-ups are in progress.
